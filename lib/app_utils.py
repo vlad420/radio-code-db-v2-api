@@ -1,7 +1,12 @@
 from pywinauto.application import Application
 from pywinauto.timings import TimeoutError
 import logging
+from lib.constants import WAIT_TIMEOUT_DIALOG_EROARE
 from lib.utils import gaseste_pid_radiocodedb
+
+
+class SNInvalid(Exception):
+    pass
 
 
 def get_app():
@@ -28,7 +33,7 @@ def wait_app_ready(app, timeout):
         return False
 
 
-def wait_for_error(app, timeout=1):
+def wait_for_error(app, timeout=WAIT_TIMEOUT_DIALOG_EROARE):
     try:
         dialog_eroare = app.RadioCodeDatabaseV20.child_window(
             control_type="Window"

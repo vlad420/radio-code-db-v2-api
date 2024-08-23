@@ -1,4 +1,5 @@
 from lib.app_utils import wait_for_error
+from lib.app_utils import SNInvalid
 
 
 # FORD
@@ -15,7 +16,7 @@ def ford_figo(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in ford_figo: {err}"
         )
     # Obtinere pin
@@ -39,7 +40,7 @@ def top_power(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in top_power: {err}"
         )
     # Obtinere pin
@@ -63,7 +64,7 @@ def ford_sanyo(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in ford_sanyo: {err}"
         )
     # Obtinere pin
@@ -94,7 +95,7 @@ def bp_standard(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in bp_standard: {err}"
         )
     # Obtinere pin
@@ -124,7 +125,7 @@ def bp_10(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in bp_10: {err}"
         )
     # Obtinere pin
@@ -154,7 +155,7 @@ def bp_666(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in bp_666: {err}"
         )
     # Obtinere pin
@@ -184,7 +185,7 @@ def bp_car300(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in bp_car300: {err}"
         )
     # Obtinere pin
@@ -214,7 +215,7 @@ def bp_sixdisk(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in bp_sixdisk: {err}"
         )
     # Obtinere pin
@@ -247,7 +248,7 @@ def chrysler_14_char_qn(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in chrysler_14_char_qn: {err}"
         )
     # Obtinere pin
@@ -272,7 +273,7 @@ def fiat_3_dig(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in fiat_3_dig: {err}"
         )
     # Obtinere pin
@@ -300,7 +301,7 @@ def alpine_mf(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in alpine_mf: {err}"
         )
     # Obtinere pin
@@ -323,7 +324,7 @@ def alpine_mf(app, sn):
         ).click_input()
         # Verificam daca apare dialogul de eroare
         if err := wait_for_error(app):
-            raise RuntimeError(
+            raise SNInvalid(
                 f"Eroare la calcularea pinului pentru S/N: {sn} in alpine_mf: {err}"
             )
         # Obtinere pin
@@ -347,7 +348,7 @@ def toyota_erc(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in toyota_erc: {err}"
         )
     # Obtinere pin
@@ -374,7 +375,7 @@ def volvo_truck(app, sn):
     ).click_input()
     # Verificam daca apare dialogul de eroare
     if err := wait_for_error(app):
-        raise RuntimeError(
+        raise SNInvalid(
             f"Eroare la calcularea pinului pentru S/N: {sn} in volvo_truck: {err}"
         )
     # Obtinere pin
