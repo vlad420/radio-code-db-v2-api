@@ -17,6 +17,8 @@ from lib.automatizari import (
 )
 import logging
 from lib.constants import WAIT_TIMEOUT_APP_READY
+from waitress import serve
+
 
 endpoints_map = {
     "ford_figo": ford_figo,
@@ -64,4 +66,4 @@ def get_pin(endpoint, sn):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    serve(app, host="0.0.0.0", port=5000)
