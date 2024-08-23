@@ -22,9 +22,6 @@ def get_app():
 
 
 def wait_app_ready(app, timeout):
-    logging.info(
-        f"Se asteapta aplicatia sa fie gata cu timeout-ul de {timeout} secunde"
-    )
     try:
         window = app.window(title="RadioCodeDatabase v2.0")
         window.wait("ready", timeout=timeout)
