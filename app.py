@@ -68,4 +68,4 @@ def get_pin(endpoint, sn):
 
 
 if __name__ == "__main__":
-    serve(app, host="0.0.0.0", port=420)
+    serve(app, host="0.0.0.0", port=443)
