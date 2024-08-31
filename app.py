@@ -18,6 +18,7 @@ from lib.automatizari import (
 import logging
 from lib.constants import WAIT_TIMEOUT_APP_READY
 from waitress import serve
+from threading import Lock
 
 
 endpoints_map = {
@@ -36,9 +37,9 @@ endpoints_map = {
     "volvo_truck": volvo_truck,
 }
 
-app = Flask(__name__)
-
 logging.basicConfig(level=logging.INFO)
+app = Flask(__name__)
+radiocodedb_lock = Lock()
 
 
 # Endpoint centralizat pentru toate endpoint-urile
@@ -47,13 +48,14 @@ def get_pin(endpoint, sn):
     if endpoint in endpoints_map:
         logging.info(f"Se cauta PIN-ul pentru SN: {sn} endpoint: {endpoint}")
         try:
-            app = get_app()
-            logging.info(f"Se asteapta aplicatia sa fie pregatita")
-            wait_app_ready(app=app, timeout=WAIT_TIMEOUT_APP_READY)
-            logging.info(f"Aplicatia este pregatita")
-            pin = endpoints_map[endpoint](app, sn)
-            logging.info(f"PIN-ul pentru SN: {sn} este {pin}")
-            return {"success": True, "code": pin}
+            with radiocodedb_lock:
+                app = get_app()
+                logging.info(f"Se asteapta aplicatia sa fie pregatita")
+                wait_app_ready(app=app, timeout=WAIT_TIMEOUT_APP_READY)
+                logging.info(f"Aplicatia este pregatita")
+                pin = endpoints_map[endpoint](app, sn)
+                logging.info(f"PIN-ul pentru SN: {sn} este {pin}")
+                return {"success": True, "code": pin}
         except SNInvalid as e:
             logging.error(f"SN-ul {sn} este invalid")
             return {"success": False, "error": str(e)}
@@ -66,4 +68,4 @@ def get_pin(endpoint, sn):
 
 
 if __name__ == "__main__":
-    serve(app, host="0.0.0.0", port=5000)
+    serve(app, host="0.0.0.0", port=420)
